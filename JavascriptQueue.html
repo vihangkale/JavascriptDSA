@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Implement Queue using javascript</title>
+</head>
+<body>
+<h1>Queue</h1>
+</body>
+</html>
+
+
+<script>
+function Queue() {
+	collection = [];
+	this.print = function() {
+		console.log(collection);
+	};
+
+	this.enqueue = function (element) { 
+		collection.push(element); //push the items from the rear
+	};
+ 
+	this.dequeue = function() {  //shift() remove the the first item of an array i.e the front 
+		return collection.shift(); //remove the items from the front 
+	};
+
+	this.front = function() {	
+		return collection[0]; //returns the item at the 0 index of the array
+	};
+
+	this.size = function() {
+		return collection.length; //returns the size of the queue/array
+	};
+
+	this.isEmpty = function() { //this function just checks if the queue is empty or not
+		return(collection.length === 0);
+	};
+
+}
+
+var q = new Queue();
+q.enqueue('L'); //adds an element to the queue
+q.enqueue('F');
+q.enqueue('C');
+q.print(); // prints the queue
+q.dequeue(); //removes and returns the item at the beginning of the array
+console.log(q.front()); //returns the item at index 0
+q.print();
+</script>
