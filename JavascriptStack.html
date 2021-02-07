@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Implementing stack using javascript</title>
+</head>
+<body>
+<h1>Implementing Stack using Javascript</h1>
+</body>
+</html>
+
+
+<script type="text/javascript">
+//Create a Stack
+var Stack = function() {
+	this.count = 0; //it will keep track of how many items are in the stack
+	this.storage = {}; //empty object
+
+	//Adds a value onto the end of the stack
+	this.push = function(value) {
+		this.storage[this.count] = value; //put the value at the top of the stack
+		this.count++; //increment count upon
+	} 
+
+
+//removes and returns the value at the end of the stack
+this.pop = function() {
+	if(this.count == 0) { //if true there is nothing in the stack
+		return undefined;
+	}
+	//if we are popping then
+	this.count--;
+	var result = this.storage[this.count]; //last item
+	delete this.storage[this.count]; //delete the last item
+	return result;
+
+}
+
+this.size = function() {
+
+	return this.count; //returns the no of items in the stack
+}
+
+
+	//returns the value at the end of the stack 
+	this.peek = function() {
+		return this.storage[this.count-1];
+	}
+
+
+}
+var myStack = new Stack(); //creates a new stack
+
+myStack.push(1); //pushes 1
+myStack.push(2); //pushes 2
+console.log(myStack.peek()); //returns the top value
+console.log(myStack.pop()); //removes the top value and returns the value
+console.log(myStack.peek()); //returns the top value which is 1 now
+myStack.push("Lenovo");
+console.log(myStack.size());
+console.log(myStack.peek());
+console.log(myStack.pop());
+console.log(myStack.peek());
+
+
+</script>
