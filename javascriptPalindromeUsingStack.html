@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Palindrome using Stack in Javascript</title>
+</head>
+<body>
+<h1>Palindrome using Stack in Javascript</h1>
+</body>
+</html>
+
+
+
+
+<script>
+/*Stacks*/
+
+//functions : push, pop, peek ,length
+
+var letters = []; //this is our stack
+
+var word = "Vihang"; //pallindrome word
+
+var rword = ""; //to reverse the variable
+
+//put letters of word into stack
+for(var i=0; i<word.length; i++) {
+	letters.push(word[i]); //pushes each letter of the word and push it onto the letters stack
+}
+
+//pop off the stack in reverse order
+for(var i = 0; i<word.length; i++){
+	rword += letters.pop(); //popped the letters and store in rword
+}
+
+if(rword == word) {
+	console.log(word + " is a palindrome");
+}
+else {
+	console.log(word + " is not a palindrome")
+}
+
+
+</script>

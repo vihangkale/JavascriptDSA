@@ -11,9 +11,10 @@
 
 <script type="text/javascript">
 //Create a Stack
+//this refers to the global object
 var Stack = function() {
 	this.count = 0; //it will keep track of how many items are in the stack
-	this.storage = {}; //empty object
+	this.storage = {}; //empty object //refers to the global object of the storage and access to the local storage/session storage
 
 	//Adds a value onto the end of the stack
 	this.push = function(value) {
