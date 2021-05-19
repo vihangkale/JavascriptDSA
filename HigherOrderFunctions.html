@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Higher order functions</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+	const companies= [
+  {name: "Company One", category: "Finance", start: 1981, end: 2004},
+  {name: "Company Two", category: "Retail", start: 1992, end: 2008},
+  {name: "Company Three", category: "Auto", start: 1999, end: 2007},
+  {name: "Company Four", category: "Retail", start: 1989, end: 2010},
+  {name: "Company Five", category: "Technology", start: 2009, end: 2014},
+  {name: "Company Six", category: "Finance", start: 1987, end: 2010},
+  {name: "Company Seven", category: "Auto", start: 1986, end: 1996},
+  {name: "Company Eight", category: "Technology", start: 2011, end: 2016},
+  {name: "Company Nine", category: "Retail", start: 1981, end: 1989}
+];
+
+const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+
+for(let i = 0; i < companies.length; i++) { //loop through companies array
+	// console.log(companies[i]);
+
+}
+
+//for each
+companies.forEach(function(company) {
+	console.log(company.name);
+})
+
+
+//filter
+//The filter() method creates a new array with all elements that pass the test implemented by the provided function.
+
+
+//example comaprison with filter
+// let canPlay = [];
+// for(let i = 0; i< ages.length; i++) {
+// 	if(ages[i] >= 21) {
+// 		canPlay.push(ages[i]);
+// 	}
+// }
+
+// actual filter // filter which gives us the array of ages greater than 21
+// const canPlay = ages.filter(function(age) {
+// 	if(age > 21) {
+// 		return true;
+// 	}
+// });
+
+//shorter way in filter
+const canPlay = ages.filter(age => age >= 21); // filter out age > 21 ages
+
+console.log(canPlay)
+
+//filter retail companies
+// const retailCompanies = companies.filter(function(company) {
+// 	if(company.category === 'Retail') {
+// 		return true;
+// 	}
+// })
+
+//shorter way for reail filter 
+const retailCompanies = companies.filter(company => company.category === "Retail");
+
+//get 80s companies
+// const eightiesCompanies = companies.filter(company => (company.start >= 1980 && company.start < 1990) );
+
+//get companies that lasted 10 years or more 
+const lastedTenYears = companies.filter(company =>(company.end - company.start >=10))
+
+
+console.log(lastedTenYears);
+
+
+
+
+//Map
+//The Map object holds key-value pairs and remembers the original insertion order of the keys. Any value (both objects and primitive values) may be used as either a key or a value.
+
+//create array of company names in which map creates a new array of company names
+// const companyNames = companies.map(function (company) {
+// 	return company.name;
+// })
+//maps out company name with start and end year
+// const testMap = companies.map(function (company) {
+// 	return `${company.name} [${company.start} - ${company.end}]`;
+// })
+
+//shorter way
+const testMap = companies.map(company => `${company.name} [${company.start} - ${company.end}]`);
+
+//gets square root of ages
+// const agesSquare = ages.map(age => Math.sqrt(age));
+
+// //gets age 3x times
+// const agesTimesthree = ages.map(age => age * 3);
+
+//shorter way to get two operations in map
+// const ageMap = ages
+// 	.map(age => Math.sqrt(age)) //first square he ages
+// 	.map(age => age * 3);		// then it multiplied the it
+
+
+//Sort
+//The sort() method sorts the elements of an array in place and returns the sorted array. The default sort order is ascending, built upon converting the elements into strings, then comparing their sequences of UTF-16 code units values.
+//sorts he companies in ascending order
+
+// const sortedCompanies = companies.sort(function(c1, c2) {
+// 	if(c1.start > c2.start) {
+// 		return 1
+// 	} else {
+// 		return -1;
+// 	}
+// })
+
+//shorter way
+const sortedCompanies = companies.sort((a, b) => (a.start > b.start? 1 : -1))
+
+//sort ages
+//sorts in ascending order
+// const sortAges = ages.sort((a, b) => a - b);
+
+//sorts in descending order
+
+// const sortAges = ages.sort((a, b) => b - a);
+
+
+// console.log(sortAges);
+
+
+//Reduce 
+//The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in a single output value.
+//comparison example for Reduce 
+// let ageSum = 0 ;
+// for(let i = 0; i < ages.length; i++) {
+// 	ageSum += ages[i];
+// }
+
+//Actual Reduce starts here
+//reurns sum of ages
+// const ageSum = ages.reduce(function(total, age) {
+// 	return total + age;
+// }, 0);
+
+//shorer way
+const ageSum = ages.reduce((total, age) => total + age, 0);
+
+//total years for all the companies
+// const totalYears = companies.reduce(function(total, company) {
+// 	return total + (company.end - company.start);
+// }, 0);
+
+//shorter way
+const totalYears = companies.reduce((total, company) => total + (company.end - company.start), 0);
+
+
+console.log(totalYears);
+
+
+//combine methods
+
+const combined = ages
+		.map(age => age * 2) //makes the array of 2 x ages 
+		.filter(age => age >= 40) //then filters than array which gives ages greater than 40
+		.sort((a, b) => a - b) // then sorts the array in ascending order
+		.reduce((a, b) => a + b, 0); // then gets the sum of he ages after the above operations
+console.log(combined);
+
+</script>
